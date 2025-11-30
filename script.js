@@ -100,7 +100,7 @@ function playRPS() {
             alert("You lose this round!");
         }
 
-        // optional early win condition (example)
+        
         if (wins === 3) {
             alert("You won early!");
             break;
@@ -112,4 +112,5 @@ function playRPS() {
         userGuesses.join(", ")
     );
 }
+
 
