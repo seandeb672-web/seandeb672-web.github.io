@@ -1,14 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const buttons = document.querySelectorAll(".btn-primary.btn-lg");
-    const lyricsButton = buttons[0]; //first button
-    const rpsButton   = buttons[1];  //second button
+    const lyricsButton = document.getElementById("lyricsBtn");
+    const rpsButton    = document.getElementById("rpsBtn");
 
     lyricsButton.addEventListener("click", generateLyrics);
     rpsButton.addEventListener("click", playRPS);
 
 });
 
+
+// LYRICS //
 
 function generateLyrics() {
     let lyrics = "";
@@ -59,8 +60,7 @@ function displayLyrics(text) {
 }
 
 
-
-//rock-paper-scissors//
+// ROCK PAPER SCISSORS  //
 
 function playRPS() {
     let userGuesses = [];
@@ -71,9 +71,14 @@ function playRPS() {
 
     for (let round = 1; round <= maxRounds; round++) {
 
-        let userChoice = prompt(
-            `Round ${round}: Rock, Paper, or Scissors?`
-        ).toLowerCase();
+        
+        let input = prompt(`Round ${round}: Rock, Paper, or Scissors?`);
+        if (!input) {
+            round--; 
+            continue;
+        }
+
+        let userChoice = input.toLowerCase();
 
         if (!choices.includes(userChoice)) {
             alert("Invalid choice, try again.");
@@ -84,7 +89,6 @@ function playRPS() {
         userGuesses.push(userChoice);
 
         let computerChoice = choices[Math.floor(Math.random() * 3)];
-
         alert("I picked: " + computerChoice);
 
         if (userChoice === computerChoice) {
@@ -100,17 +104,16 @@ function playRPS() {
             alert("You lose this round!");
         }
 
-        
+
         if (wins === 3) {
             alert("You won early!");
             break;
         }
     }
 
+    // return guesses to user
     alert(
         "Game over!\nYour guesses were:\n" +
         userGuesses.join(", ")
     );
 }
-
-
