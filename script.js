@@ -1,3 +1,6 @@
+alert("JS LOADED");
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const lyricsButton = document.getElementById("lyricsBtn");
@@ -117,3 +120,4 @@ function playRPS() {
         userGuesses.join(", ")
     );
 }
+
